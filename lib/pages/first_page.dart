@@ -28,7 +28,9 @@ class FirstPage extends StatelessWidget {
             leading: Icon(Icons.home),
             title: Text("H O M E"),
             onTap:() {
-              
+              Navigator.pop(context);
+              //route to the home page
+              Navigator.pushNamed(context, '/homepage');
             },
 
           ),
@@ -36,7 +38,9 @@ class FirstPage extends StatelessWidget {
             leading: Icon(Icons.settings),
             title: Text("S E T T I N G S"),
             onTap:() {
-              
+              Navigator.pop(context);
+              // route to the settings page
+              Navigator.pushNamed(context, '/settingspage');
             },
 
           )  
