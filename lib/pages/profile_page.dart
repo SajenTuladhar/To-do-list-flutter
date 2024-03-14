@@ -3,14 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      backgroundColor: Colors.pink[50],
-      body:Center(child:  Text("settings page"),)
+      backgroundColor: Colors.pink[100],
+      body:Center(child:  Text("profile page"),)
     );
   }
 }
