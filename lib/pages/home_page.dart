@@ -19,7 +19,7 @@ final _controller=TextEditingController();
   //list of todo tasks
   List toDoList =[
     ["Finish this tutorial",false],
-    ["Concentrate Cunt",false],
+    
   ];
 
   //save new task
