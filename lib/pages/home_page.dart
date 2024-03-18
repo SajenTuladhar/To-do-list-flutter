@@ -12,17 +12,37 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  //text controller
+final _controller=TextEditingController();
+
   //list of todo tasks
   List toDoList =[
     ["Finish this tutorial",false],
     ["Concentrate Cunt",false],
   ];
 
+  //save new task
+  void saveNewTask(){
+    setState(() {
+      //adds whatever the user input in textbox as it is stored in controller and false as in the task is not completed yet
+      //and adds it to the current list of task.
+      toDoList.add([_controller.text,false]);
+      //clears the text box for next use
+      _controller.clear();
+    });
+    // dismisses the dialogue box after pressing save
+    Navigator.of(context).pop() ;
+  }
+
   void addnewtask(){
     showDialog(
       context: context,
       builder: (BuildContext context){
-      return DialogBox();
+      return DialogBox(controller:_controller,
+      onSave: saveNewTask,
+      // just dismmissed the dialog box
+      onCancle: () => Navigator.of(context).pop(),);
     },);
   }
   //check box was tapped
@@ -30,9 +50,13 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       toDoList[index][1] = !toDoList[index][1];
     });
+  }
 
-  
-    
+  void deleteTask(int index){
+    setState(() {
+      toDoList.removeAt(index);
+    });
+
   }
   @override
   Widget build(BuildContext context) {
@@ -59,6 +83,7 @@ class _HomePageState extends State<HomePage> {
             return ToDoTile(taskName: toDoList[index][0],
              taskCompeleted:toDoList[index][1],
               onChanged: (value) => checkBoxChanged(value,index),
+              deleteFunction: (context) => deleteTask(index) ,
               );
           },
         )
